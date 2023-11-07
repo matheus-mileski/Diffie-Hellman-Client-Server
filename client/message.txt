@@ -1,0 +1,1 @@
+Um algoritmo de criptografia de chave secreta é um método de criptografia que usa a mesma chave para criptografar e descriptografar dados.

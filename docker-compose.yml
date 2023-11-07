@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  dh-server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    volumes:
+      - ./server:/usr/src/app/server
+      - ./modules:/usr/src/app/modules
+    ports:
+      - "65432:65432"
+    networks:
+      - dh-network
+
+  dh-client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    volumes:
+      - ./client:/usr/src/app/client
+      - ./modules:/usr/src/app/modules
+    depends_on:
+      - dh-server
+    networks:
+      - dh-network
+
+networks:
+  dh-network:
+    driver: bridge
